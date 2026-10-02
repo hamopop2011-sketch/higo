@@ -1,0 +1,35 @@
+{
+  "_comment": "هذا ملف مثال فقط. يجب عليك الحصول على ملف google-services.json الفعلي من Firebase Console",
+  "_instructions_ar": [
+    "1. اذهب إلى https://console.firebase.google.com",
+    "2. اختر مشروعك أو قم بإنشاء مشروع جديد",
+    "3. اضغط على أيقونة Android لإضافة تطبيق Android",
+    "4. أدخل اسم الحزمة (Package name) من ملف android/app/build.gradle",
+    "5. قم بتنزيل ملف google-services.json",
+    "6. انسخ الملف إلى مجلد android/app/",
+    "7. احذف هذا الملف (.example) واحتفظ بملف google-services.json فقط"
+  ],
+  "_instructions_en": [
+    "1. Go to https://console.firebase.google.com",
+    "2. Select your project or create a new one",
+    "3. Click on Android icon to add an Android app",
+    "4. Enter the package name from android/app/build.gradle",
+    "5. Download google-services.json file",
+    "6. Copy the file to android/app/ folder",
+    "7. Delete this .example file and keep only google-services.json"
+  ],
+  "project_info": {
+    "project_number": "YOUR_PROJECT_NUMBER",
+    "project_id": "YOUR_PROJECT_ID"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "YOUR_MOBILE_SDK_APP_ID",
+        "android_client_info": {
+          "package_name": "com.example.higo"
+        }
+      }
+    }
+  ]
+}
