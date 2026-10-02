@@ -13,22 +13,30 @@ app.use(express.json());
 // تهيئة Firebase Admin SDK
 let serviceAccount;
 
-if (process.env.FIREBASE_SERVICE_ACCOUNT) {
-  // في حالة Vercel - قراءة من Environment Variable
-  serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-} else {
-  // في حالة التطوير المحلي - قراءة من الملف
-  serviceAccount = require('./serviceAccountKey.json');
+try {
+  if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+    console.log('🔑 Loading Firebase credentials from environment variable...');
+    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+  } else if (require('fs').existsSync('./serviceAccountKey.json')) {
+    console.log('🔑 Loading Firebase credentials from file...');
+    serviceAccount = require('./serviceAccountKey.json');
+  } else {
+    throw new Error('❌ No Firebase credentials found! Set FIREBASE_SERVICE_ACCOUNT environment variable.');
+  }
+
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+
+  const db = admin.firestore();
+  const messaging = admin.messaging();
+
+  console.log('✅ Firebase Admin initialized successfully');
+} catch (error) {
+  console.error('❌ Firebase initialization error:', error.message);
+  console.error('Full error:', error);
+  process.exit(1);
 }
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
-
-const db = admin.firestore();
-const messaging = admin.messaging();
-
-console.log('✅ Firebase Admin initialized successfully');
 
 // الاستماع للرسائل الجديدة
 const setupMessageListener = () => {
