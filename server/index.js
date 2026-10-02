@@ -11,8 +11,15 @@ app.use(cors());
 app.use(express.json());
 
 // تهيئة Firebase Admin SDK
-// ضع ملف serviceAccountKey.json في نفس المجلد
-const serviceAccount = require('./serviceAccountKey.json');
+let serviceAccount;
+
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+  // في حالة Vercel - قراءة من Environment Variable
+  serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+} else {
+  // في حالة التطوير المحلي - قراءة من الملف
+  serviceAccount = require('./serviceAccountKey.json');
+}
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
