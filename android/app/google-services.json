@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "769135086278",
+    "project_id": "higo-925af",
+    "storage_bucket": "higo-925af.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769135086278:android:7a48984361eb0b9675a5c7",
+        "android_client_info": {
+          "package_name": "com.example.higo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd0m9G4ZHJM3OwWey3ETYB4juNIzYhRs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

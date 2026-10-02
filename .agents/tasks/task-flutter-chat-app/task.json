@@ -1,0 +1,7 @@
+{
+  "task_id": "task-flutter-chat-app",
+  "task_description": "بناء تطبيق Flutter للدردشة الفورية مع Firebase، يتضمن صفحات التسجيل والدخول والدردشة مع تحسينات الأداء والكاشينج",
+  "status": "pending",
+  "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003", "FEAT-004"],
+  "blocked_reason": null
+}

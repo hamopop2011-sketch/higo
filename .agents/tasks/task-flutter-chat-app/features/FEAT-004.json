@@ -1,0 +1,35 @@
+{
+  "id": "FEAT-004",
+  "type": "feat",
+  "description": "Chat UI with real-time messaging: Create chat list page showing all conversations and chat room page for real-time messaging with performance optimizations (ListView.builder, pagination, caching, Firestore offline persistence). Includes user list to start new chats. This feature depends on FEAT-003 (auth flow must be complete).",
+  "status": "pending",
+  "steps": [
+    "Create d:\\higo\\lib\\widgets\\chat_room_tile.dart - ListTile showing chat room preview with cached_network_image for avatar, last message, timestamp, unread badge, using const constructor",
+    "Create d:\\higo\\lib\\widgets\\message_bubble.dart - message bubble widget with sender/receiver styling, timestamp, read status, using const constructor where possible",
+    "Create d:\\higo\\lib\\pages\\chat\\users_list_page.dart - displays all users from Firestore using ListView.builder for performance, allows selecting user to start chat, creates chat room if not exists, includes search functionality",
+    "Create d:\\higo\\lib\\pages\\chat\\chat_list_page.dart - displays all chat rooms using StreamProvider from chat_rooms_provider, ListView.builder for performance, pull-to-refresh, floating action button to navigate to users_list_page, empty state when no chats",
+    "Create d:\\higo\\lib\\pages\\chat\\chat_room_page.dart - displays messages for selected chat room using StreamProvider from messages_provider, ListView.builder with reverse: true for chat layout, pagination (load 20 messages at a time), TextField for composing message, send button, real-time message updates, optimistic UI updates, offline support with Firestore persistence",
+    "Update d:\\higo\\lib\\main.dart to initialize Firebase in main(), wrap app with ProviderScope, configure MaterialApp with Arabic locale, RTL support (Directionality widget), Material Design 3 theme (useMaterial3: true, Arabic font if needed), and set home to auth_wrapper",
+    "Enable Firestore offline persistence by configuring FirebaseFirestore.instance.settings in firebase_service.dart with persistenceEnabled: true and cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED"
+  ],
+  "acceptance_criteria": [
+    "Chat list page shows all conversations in real-time with last message preview",
+    "Users can start new chat by selecting from users list",
+    "Chat room page displays messages with pagination (20 at a time)",
+    "Messages appear in real-time without manual refresh",
+    "Offline mode works - messages are cached and sync when online",
+    "ListView.builder is used for performance with large lists",
+    "cached_network_image is used for all user avatars",
+    "All text is in Arabic and layout is RTL",
+    "App uses Material Design 3 theme",
+    "flutter analyze shows no errors",
+    "App builds and runs successfully on Android emulator"
+  ],
+  "verification": [
+    "cd d:\\higo && flutter analyze",
+    "cd d:\\higo && flutter build apk --debug",
+    "cd d:\\higo && flutter run (requires emulator/device)"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}
